@@ -5,6 +5,7 @@
     <string name="remember">Запомнить</string>
     <string name="do_check">Чекни</string>
     <string name="toggle">Переключалка</string>
-    <string name="pushed">НАЖАЛИ</string>
+    <string name="pushed">НАЖАТА</string>
     <string name="unpushed">ОТЖАТА</string>
+    <string name="somethings">Введите хоть что-нибудь</string>
 </resources>

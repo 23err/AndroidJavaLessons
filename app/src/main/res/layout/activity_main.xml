@@ -4,43 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal|center_vertical"
     android:orientation="vertical"
     android:padding="30dp"
-    android:gravity="center_horizontal|center_vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:fontFamily="monospace"
+        android:text="@string/hello_world"
+        android:textColor="@color/main_color"
+        android:textSize="28sp" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:inputType="text"
+        android:textColor="@color/second_main_color"
+        android:textColorHighlight="@color/purple_200"
+        android:textStyle="italic"
+        android:tooltipText="@string/somethings"
+        tools:text="something text" />
+
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="15dp"
-        android:layout_gravity="end"
-        android:text="@string/remember"/>
+        android:textStyle="italic"
+        android:padding="10dp"
+        android:textColor="@color/gray_4"
+        android:background="@color/blue_gray"
+        android:text="@string/remember" />
+
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/white_rect"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="15dp"
-        android:text="@string/do_check"/>
+        android:fontFamily="serif"
+        android:text="@string/do_check" />
+
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOn="@string/pushed"
+        android:text="@string/toggle"
         android:textOff="@string/unpushed"
-        android:text="@string/toggle"/>
+        android:textOn="@string/pushed" />
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
         android:text="@string/GO" />
 
 </LinearLayout>
