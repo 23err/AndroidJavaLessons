@@ -8,4 +8,11 @@
     <string name="pushed">НАЖАТА</string>
     <string name="unpushed">ОТЖАТА</string>
     <string name="somethings">Введите хоть что-нибудь</string>
+    <string name="simple_text">Просто текст</string>
+    <string name="name">ФИО</string>
+    <string name="phone">Телефон</string>
+    <string name="number">Число</string>
+    <string name="text_password">Текстовый пароль</string>
+    <string name="email">email адрес</string>
+    <string name="time">Время</string>
 </resources>
