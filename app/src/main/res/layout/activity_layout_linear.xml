@@ -152,7 +152,7 @@
                 android:id="@+id/btnComma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/comma"
+                android:text="@string/dot"
                 android:textSize="@dimen/text_size_btn" />
 
             <Button

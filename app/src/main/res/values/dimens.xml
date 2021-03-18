@@ -4,4 +4,9 @@
     <dimen name="edit_text_size">52sp</dimen>
     <dimen name="btn_text_size">24sp</dimen>
     <dimen name="btn_margin_horizontal">5dp</dimen>
+    <dimen name="result_margin_top">100dp</dimen>
+    <dimen name="result_padding_horizontal">20dp</dimen>
+    <dimen name="guideline_begin_constraint">246dp</dimen>
+    <dimen name="btn_width">0dp</dimen>
+    <dimen name="btn_height">0dp</dimen>
 </resources>

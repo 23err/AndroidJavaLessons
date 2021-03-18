@@ -7,31 +7,31 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/result_margin_top"
         android:gravity="end"
-        android:paddingHorizontal="20dp"
+        android:inputType="numberDecimal"
+        android:paddingHorizontal="@dimen/result_padding_horizontal"
         android:paddingVertical="@dimen/btn_margin_horizontal"
         android:textSize="@dimen/edit_text_size"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="123" />
+        tools:text="@string/result_tools_text" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="246dp" />
+        app:layout_constraintGuide_begin="@dimen/guideline_begin_constraint" />
 
     <Button
         android:id="@+id/btnEqual"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/equal"
@@ -44,8 +44,8 @@
 
     <Button
         android:id="@+id/btnFive"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_5"
@@ -58,8 +58,8 @@
 
     <Button
         android:id="@+id/btnSix"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_6"
@@ -72,11 +72,11 @@
 
     <Button
         android:id="@+id/btnComma"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
-        android:text="@string/comma"
+        android:text="@string/dot"
 
         android:textSize="@dimen/btn_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +86,8 @@
 
     <Button
         android:id="@+id/btnZero"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_0"
@@ -100,8 +100,8 @@
 
     <Button
         android:id="@+id/btnMinus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/minus"
@@ -114,8 +114,8 @@
 
     <Button
         android:id="@+id/btnDivide"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/divide"
@@ -128,8 +128,8 @@
 
     <Button
         android:id="@+id/btnClear"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/clear"
@@ -142,8 +142,8 @@
 
     <Button
         android:id="@+id/btnPercent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/percent"
@@ -157,8 +157,8 @@
 
     <Button
         android:id="@+id/btnClearAll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
 
@@ -172,8 +172,8 @@
 
     <Button
         android:id="@+id/btnSeven"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:text="@string/_7"
         android:textSize="@dimen/btn_text_size"
         app:layout_constraintBottom_toTopOf="@+id/btnFour"
@@ -186,8 +186,8 @@
 
     <Button
         android:id="@+id/btnPlusMinus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/plus_minus"
@@ -200,8 +200,8 @@
 
     <Button
         android:id="@+id/btnFour"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_4"
@@ -214,8 +214,8 @@
 
     <Button
         android:id="@+id/btnEight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_8"
@@ -228,8 +228,8 @@
 
     <Button
         android:id="@+id/btnNine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/_9"
@@ -242,8 +242,8 @@
 
     <Button
         android:id="@+id/btnMultiply"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
         android:layout_marginStart="@dimen/btn_margin_horizontal"
         android:layout_marginEnd="@dimen/btn_margin_horizontal"
         android:text="@string/multiply"

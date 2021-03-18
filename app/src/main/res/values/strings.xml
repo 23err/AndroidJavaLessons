@@ -35,11 +35,12 @@
     <string name="plus_minus">+/-</string>
     <string name="zero">0</string>
     <string name="equal">=</string>
-    <string name="comma">,</string>
+    <string name="dot">.</string>
     <string name="clear_all">C</string>
     <string name="_1">1</string>
     <string name="_4">4</string>
     <string name="_5">5</string>
     <string name="_6">6</string>
     <string name="_0">0</string>
+    <string name="result_tools_text">123</string>
 </resources>
