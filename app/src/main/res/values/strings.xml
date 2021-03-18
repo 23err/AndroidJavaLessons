@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">AndroidJavaApp</string>
+    <string name="hello_world">Hello world</string>
+    <string name="GO">Поехали</string>
+    <string name="remember">Запомнить</string>
+    <string name="do_check">Чекни</string>
+    <string name="toggle">Переключалка</string>
+    <string name="pushed">НАЖАТА</string>
+    <string name="unpushed">ОТЖАТА</string>
+    <string name="somethings">Введите хоть что-нибудь</string>
+    <string name="simple_text">Просто текст</string>
+    <string name="name">ФИО</string>
+    <string name="phone">Телефон</string>
+    <string name="number">Число</string>
+    <string name="text_password">Текстовый пароль</string>
+    <string name="email">email адрес</string>
+    <string name="time">Время</string>
+    <string name="date">Дата</string>
 </resources>
