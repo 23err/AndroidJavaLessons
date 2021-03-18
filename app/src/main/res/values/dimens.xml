@@ -3,4 +3,5 @@
     <dimen name="text_size_btn">32sp</dimen>
     <dimen name="edit_text_size">52sp</dimen>
     <dimen name="btn_text_size">24sp</dimen>
+    <dimen name="btn_margin_horizontal">5dp</dimen>
 </resources>
