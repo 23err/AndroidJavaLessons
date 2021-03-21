@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         if (tvResult.getText().toString().equals(getResources().getString(R.string._0))
-        && btn.getId() != R.id.btnDot) {
+                && btn.getId() != R.id.btnDot) {
             tvResult.setText(null);
         }
+
 
         tvResult.setText(tvResult.getText().toString() + ((Button) btn).getText().toString());
     }
