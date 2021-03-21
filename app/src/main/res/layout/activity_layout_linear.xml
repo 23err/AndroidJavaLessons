@@ -149,7 +149,7 @@
                 android:textSize="@dimen/text_size_btn" />
 
             <Button
-                android:id="@+id/btnComma"
+                android:id="@+id/btnDot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dot"
