@@ -1,15 +1,50 @@
 package com.example.androidjavaapp;
 
 
-public class Calculator {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    enum Operation {
-        PLUS, MINUS, MUPLTIPLY, DIVIDE, PERCENT, EQUAL;
+public class Calculator implements Parcelable {
+
+    public Calculator() {
     }
 
-    Operation nextOperation = null;
+    protected Calculator(Parcel in) {
+        result = in.readFloat();
+    }
 
-    float result = 0;
+    public static final Creator<Calculator> CREATOR = new Creator<Calculator>() {
+        @Override
+        public Calculator createFromParcel(Parcel in) {
+            return new Calculator(in);
+        }
+
+        @Override
+        public Calculator[] newArray(int size) {
+            return new Calculator[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeFloat(result);
+    }
+
+    enum Operation {
+        PLUS, MINUS, MUPLTIPLY, DIVIDE, PERCENT, EQUAL, NONE;
+    }
+
+    Operation nextOperation = Operation.NONE;
+
+    private float result = 0;
+
+
+    private float currentNumber = 0;
 
     private OnChangeResultListener listener;
 
@@ -33,14 +68,20 @@ public class Calculator {
                     break;
                 }
                 case PERCENT: {
-                    result %= number;
+                    result *= number / 100;
+                    break;
+                }
+
+                case NONE: {
+                    result = number;
+                    break;
                 }
 
             }
         }
         if (operation == Operation.EQUAL) {
             notifyListener();
-            nextOperation = null;
+            setNextOperationNone();
         } else {
             nextOperation = operation;
         }
@@ -48,7 +89,12 @@ public class Calculator {
 
     public void clear() {
         result = 0;
+        setNextOperationNone();
         notifyListener();
+    }
+
+    private void setNextOperationNone() {
+        nextOperation = Operation.NONE;
     }
 
 
@@ -60,6 +106,14 @@ public class Calculator {
         if (listener != null) {
             listener.change(result);
         }
+    }
+
+    public float getCurrentNumber() {
+        return currentNumber;
+    }
+
+    public void setCurrentNumber(float currentNumber) {
+        this.currentNumber = currentNumber;
     }
 
 
