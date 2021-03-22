@@ -4,6 +4,8 @@ package com.example.androidjavaapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 public class Calculator implements Parcelable {
 
     public Calculator() {
@@ -36,15 +38,43 @@ public class Calculator implements Parcelable {
     }
 
     public enum Operation {
-        PLUS, MINUS, MUPLTIPLY, DIVIDE, PERCENT, EQUAL, NONE;
+        PLUS("+"),
+        MINUS("-"),
+        MUPLTIPLY("*"),
+        DIVIDE("/"),
+        PERCENT("%"),
+        EQUAL("="),
+        NONE("");
+
+        private String symbol;
+
+        Operation(String symbol) {
+            this.symbol = symbol;
+        }
+
+
+        @NonNull
+        @Override
+        public String toString() {
+            return symbol;
+        }
     }
 
     private Operation nextOperation = Operation.NONE;
     private float result = 0;
-
-    private OnChangeResultListener listener;
+    private String displayOperation = "";
+    private OnChangeListener onChangeListener;
 
     public void nextOperation(Operation operation, float number) {
+
+        if ((operation.equals(Operation.DIVIDE) || operation.equals(Operation.MUPLTIPLY))
+                && (nextOperation.equals(Operation.PLUS)|| nextOperation.equals(Operation.MINUS))) {
+            displayOperation = "(" + displayOperation + getFormatString(number) +")" ;
+        } else {
+            displayOperation += getFormatString(number);
+        }
+        displayOperation += operation;
+        notifyDisplayOperationListener();
 
         if (operation.equals(Operation.PERCENT)) {
             switch (nextOperation) {
@@ -88,40 +118,57 @@ public class Calculator implements Parcelable {
             }
         }
 
-        if (operation.equals(Operation.EQUAL)) {
-
-        }
-
         if (operation != Operation.EQUAL && operation != Operation.PERCENT) {
             nextOperation = operation;
         } else {
-            notifyListener();
+            notifyResultListener();
             nextOperation = Operation.NONE;
+            clearDisplayOperation();
             return;
         }
     }
 
+    private String getFormatString(float number) {
+        if (number % 1 == 0) {
+            return String.valueOf((int) number);
+        } else {
+            return String.valueOf(number);
+        }
+
+    }
+
     public void clear() {
         result = 0;
+        clearDisplayOperation();
         setNextOperationNone();
-        notifyListener();
+        notifyResultListener();
+        clearDisplayOperation();
+        notifyDisplayOperationListener();
     }
 
     private void setNextOperationNone() {
         nextOperation = Operation.NONE;
     }
 
-
-    public void setOnChangeResultListener(OnChangeResultListener listener) {
-        this.listener = listener;
+    private void clearDisplayOperation() {
+        displayOperation = "";
     }
 
-    public void notifyListener() {
-        if (listener != null) {
-            listener.change(result);
+    public void setOnChangeResultListener(OnChangeListener listener) {
+        this.onChangeListener = listener;
+    }
+
+    public void notifyResultListener() {
+        if (onChangeListener != null) {
+            onChangeListener.changeResult(result);
         }
     }
 
+    public void notifyDisplayOperationListener() {
+        if (onChangeListener != null) {
+            onChangeListener.changeDisplayOperation(displayOperation);
+        }
+    }
 
 
 }

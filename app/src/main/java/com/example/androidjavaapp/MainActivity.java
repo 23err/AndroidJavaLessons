@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btn;
     private TextView tvResult;
     Calculator calculator;
-    private boolean newInput = true;
+    private boolean isNewInput = true;
+    private TextView tvOperations;
+    private boolean isNewCalculation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,25 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             calculator = (Calculator) savedInstanceState.getParcelable(CALCULATOR);
             showCorrectFloatResult(savedInstanceState.getFloat(CURRENT_NUMBER));
+
         } else {
             calculator = new Calculator();
         }
 
-        calculator.setOnChangeResultListener(new OnChangeResultListener() {
+        calculator.setOnChangeResultListener(new OnChangeListener() {
             @Override
-            public void change(float result) {
+            public void changeResult(float result) {
                 showCorrectFloatResult(result);
             }
+
+            @Override
+            public void changeDisplayOperation(String displayOperation) {
+                tvOperations.setText(displayOperation);
+            }
         });
+
+        calculator.notifyDisplayOperationListener();
+
 
 
     }
@@ -52,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void getViews() {
         tvResult = findViewById(R.id.tvResult);
+        tvOperations = findViewById(R.id.tvOperations);
+
     }
 
     public void btnNumbersOnClick(View btn) {
@@ -69,11 +81,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkNewInput() {
-        if (newInput) {
-            newInput = false;
+        if (isNewInput) {
+            isNewInput = false;
             tvResult.setText(getResources().getString(R.string._0));
         }
     }
+
+
 
     public void btnClearOnClick(View view) {
         tvResult.setText(String.valueOf(getResources().getString(R.string._0)));
@@ -81,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnPlusMinusOnClick(View view) {
         checkNewInput();
-        if (!tvResult.getText().toString().contains(getResources().getString(R.string.minus))) {
+        if (tvResult.getText().toString().equals(getResources().getString(R.string._0))){
+            return;
+        } else if (!tvResult.getText().toString().contains(getResources().getString(R.string.minus))) {
             tvResult.setText(getResources().getString(R.string.minus) + tvResult.getText().toString());
         } else {
             tvResult.setText(tvResult.getText().toString().substring(1));
@@ -89,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnOperationOnClick(View view) throws Exception {
-        newInput = true;
+        isNewInput = true;
         Calculator.Operation nextOperation;
         switch (view.getId()) {
             case (R.id.btnPlus): {
@@ -114,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
             }
             case (R.id.btnEqual): {
                 nextOperation = Calculator.Operation.EQUAL;
+                isNewCalculation = true;
+
                 break;
             }
             default:

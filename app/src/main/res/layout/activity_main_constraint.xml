@@ -5,6 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvOperations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tvOperation_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/tvOperation_text_size"
+        android:textColor="@color/gray_4"
+        android:gravity="end"
+        android:paddingVertical="@dimen/textview_padding_vertical"
+        android:paddingHorizontal="@dimen/textview_padding_horizontal"
+        android:text="@string/_0"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -13,13 +27,13 @@
         android:layout_marginTop="@dimen/result_margin_top"
         android:gravity="end"
         android:inputType="numberDecimal"
-        android:paddingHorizontal="@dimen/result_padding_horizontal"
-        android:paddingVertical="@dimen/btn_margin_horizontal"
+        android:paddingHorizontal="@dimen/textview_padding_horizontal"
+        android:paddingVertical="@dimen/textview_padding_vertical"
         android:text="@string/_0"
         android:textSize="@dimen/edit_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOperations"
         tools:text="@string/result_tools_text" />
 
     <androidx.constraintlayout.widget.Guideline
