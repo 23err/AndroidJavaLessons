@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     public static final String CALCULATOR = "calculator";
+    public static final String CURRENT_NUMBER = "current_number";
     private Button btn;
     private TextView tvResult;
     Calculator calculator;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             calculator = (Calculator) savedInstanceState.getParcelable(CALCULATOR);
-            showCorrectFloatResult(calculator.getCurrentNumber());
+            showCorrectFloatResult(savedInstanceState.getFloat(CURRENT_NUMBER));
         } else {
             calculator = new Calculator();
         }
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         float currentNumber = Float.parseFloat(tvResult.getText().toString());
-        calculator.setCurrentNumber(currentNumber);
+        outState.putFloat(CURRENT_NUMBER, currentNumber);
         outState.putParcelable(CALCULATOR, calculator);
     }
 }

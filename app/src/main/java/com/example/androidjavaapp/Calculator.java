@@ -35,20 +35,33 @@ public class Calculator implements Parcelable {
         parcel.writeFloat(result);
     }
 
-    enum Operation {
+    public enum Operation {
         PLUS, MINUS, MUPLTIPLY, DIVIDE, PERCENT, EQUAL, NONE;
     }
 
-    Operation nextOperation = Operation.NONE;
-
+    private Operation nextOperation = Operation.NONE;
     private float result = 0;
-
-
-    private float currentNumber = 0;
 
     private OnChangeResultListener listener;
 
     public void nextOperation(Operation operation, float number) {
+
+        if (operation.equals(Operation.PERCENT)) {
+            switch (nextOperation) {
+                case PLUS:
+                case MINUS: {
+                    number = result * number / 100;
+                    break;
+                }
+                case MUPLTIPLY:
+                case DIVIDE: {
+                    number = number / 100;
+                    break;
+                }
+            }
+
+        }
+
         if (nextOperation != null) {
             switch (nextOperation) {
                 case PLUS: {
@@ -67,11 +80,6 @@ public class Calculator implements Parcelable {
                     result /= number;
                     break;
                 }
-                case PERCENT: {
-                    result *= number / 100;
-                    break;
-                }
-
                 case NONE: {
                     result = number;
                     break;
@@ -79,11 +87,17 @@ public class Calculator implements Parcelable {
 
             }
         }
-        if (operation == Operation.EQUAL) {
-            notifyListener();
-            setNextOperationNone();
-        } else {
+
+        if (operation.equals(Operation.EQUAL)) {
+
+        }
+
+        if (operation != Operation.EQUAL && operation != Operation.PERCENT) {
             nextOperation = operation;
+        } else {
+            notifyListener();
+            nextOperation = Operation.NONE;
+            return;
         }
     }
 
@@ -108,13 +122,6 @@ public class Calculator implements Parcelable {
         }
     }
 
-    public float getCurrentNumber() {
-        return currentNumber;
-    }
-
-    public void setCurrentNumber(float currentNumber) {
-        this.currentNumber = currentNumber;
-    }
 
 
 }
