@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button_style">
+        <item name="android:layout_width">@dimen/btn_width</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="android:layout_marginStart">@dimen/btn_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/btn_margin_horizontal</item>
+        <item name="android:textSize">@dimen/btn_text_size</item>
+        <item name="cornerRadius">@dimen/corner_radius</item>
+    </style>
+
+
+</resources>
