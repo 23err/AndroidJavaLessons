@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity {
     public static final int REQUEST_CODE_SETTING = 7777;
     private Button btn;
     private TextView tvResult;
-    Calculator calculator;
+    private Calculator calculator;
     private boolean isNewInput = true;
     private TextView tvOperations;
     private boolean isNewCalculation;
@@ -94,16 +94,17 @@ public class MainActivity extends BaseActivity {
 
     public void btnNumbersOnClick(View btn) {
         checkNewInput();
-        if (btn.getId() == R.id.btnDot && tvResult.getText().toString().contains(getResources().getString(R.string.dot))) {
+        String tvResultText = tvResult.getText().toString();
+        if (btn.getId() == R.id.btnDot && tvResultText.contains(getResources().getString(R.string.dot))) {
             return;
         }
-        if (tvResult.getText().toString().equals(getResources().getString(R.string._0))
+        if (tvResultText.equals(getResources().getString(R.string._0))
                 && btn.getId() != R.id.btnDot) {
-            tvResult.setText(null);
+            tvResultText = "";
         }
 
 
-        tvResult.setText(tvResult.getText().toString() + ((Button) btn).getText().toString());
+        tvResult.setText(tvResultText + ((Button) btn).getText().toString());
     }
 
     private void checkNewInput() {
@@ -121,12 +122,13 @@ public class MainActivity extends BaseActivity {
 
     public void btnPlusMinusOnClick(View view) {
         checkNewInput();
-        if (tvResult.getText().toString().equals(getResources().getString(R.string._0))){
+        String tvResultText = tvResult.getText().toString();
+        if (tvResultText.equals(getResources().getString(R.string._0))){
             return;
-        } else if (!tvResult.getText().toString().contains(getResources().getString(R.string.minus))) {
-            tvResult.setText(getResources().getString(R.string.minus) + tvResult.getText().toString());
+        } else if (!tvResultText.contains(getResources().getString(R.string.minus))) {
+            tvResult.setText(getResources().getString(R.string.minus) + tvResultText);
         } else {
-            tvResult.setText(tvResult.getText().toString().substring(1));
+            tvResult.setText(tvResultText.substring(1));
         }
     }
 
